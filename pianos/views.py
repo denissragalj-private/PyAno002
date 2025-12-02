@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
 # Create your views here.
-def index (requests):
-    render(requests, '')
-
-
+def index(request):
+    return render(request, 'pianos/index.html')
