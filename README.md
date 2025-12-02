@@ -1,2 +1,2 @@
-# PyAno002
+# OL-OPYT_DEV_H-04-25-PyAno
 Django web aplikacija za evidenciju klavira
