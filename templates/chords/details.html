@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+
+
+{% block page_content %}
+<a href="{% url 'chords_list' %}" class="btn btn-outline-info">Povratak na listu akorda</a>
+
+<h1>{{ chord.model }}</h1>
+{% if chord.description %}
+    <p>Opis: {{ chord.description }}</p>
+{% endif %}
+<p>Tip akorda: {{ chord.type }}</p>
+<p>Kategorija akorda: {{ chord.category }}</p>
+<div><img width=300 src="{{ chord.picture_url }}" /></div>
+{% endblock page_content %}

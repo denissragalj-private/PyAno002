@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+
+
+{% block page_content %}
+<h1>All Chords</h1>
+<a href="{% url 'chords_create' %}" class="btn btn-outline-primary">Add chord</a>
+
+{% if chords %}
+    <div class="row">
+        {% for chord in chords %}
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img height=200 src="{{ chord.picture_url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ chord.model }}</h5>
+                        {% if chord.description %}
+                            <p class="card-text">{{ chord.description }}</p>
+                        {% endif %}
+                        <a href="{% url 'chords_details' chord.pk %}" class="btn btn-outline-success">Vise detalja</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Nema niti jednog akorda u bazi. Dodaj akord</p>
+{% endif %}
+
+
+{% endblock page_content %}
