@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
 from pianos.models.pianos import Piano
@@ -35,3 +36,5 @@ class PianoCreateView(CreateView):
     model = Piano
     # fields = ['model', 'description', 'category']
     fields = '__all__'
+
+    success_url = reverse_lazy('pianos:pianos_list')
