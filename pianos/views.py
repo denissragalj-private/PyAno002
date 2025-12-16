@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from pianos.models.pianos import Piano
 
@@ -29,3 +29,9 @@ class PianoDetailView(DetailView):
 def create(request):
     # pianos = Piano.objects.all()
     return render(request, 'pianos/create.html')
+
+
+class PianoCreateView(CreateView):
+    model = Piano
+    # fields = ['model', 'description', 'category']
+    fields = '__all__'
