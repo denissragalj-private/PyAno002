@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models.chords import Chord, ChordCategory, ChordType
+from .models.chords import Chord, ChordType
+
 
 # Register your models here.
-admin.site.register([Chord, ChordCategory, ChordType])
+admin.site.register([Chord, ChordType])

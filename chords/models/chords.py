@@ -1,33 +1,35 @@
 from django.db import models
 
-from .chord_category import ChordCategory
-from .chord_type import ChordType
-
+from .chords_type import ChordType
 
 class Chord(models.Model):
-    model = models.CharField(max_length=150,
-                             null=False,
-                             blank=False,
-                             help_text='Naziv Akorda')
-    description = models.TextField(max_length=750,
-                                   null=True,
-                                   blank=True,
-                                   help_text='Opis klavira')
+    name = models.CharField(
+        max_length=15,
+        null=False,
+        blank=False,
+        help_text='Naziv akorda'
+    )
 
-    category = models.ForeignKey(ChordCategory,
-                                 null=False,
-                                 default=0,
-                                 on_delete=models.SET_DEFAULT)
+    symbol = models.CharField(
+        max_length=15,
+        null=True,
+        blank=True,
+        help_text='Simbol akorda'
+    )
 
-    type = models.ForeignKey(ChordType,
-                             null=False,
-                             default=0,
-                             on_delete=models.SET_DEFAULT)
+    schema_url = models.CharField(
+        max_length=750,
+        null=True,
+        blank=True,
+        help_text='Putanja do sheme akorda'
+    )
 
-    picture_url = models.CharField(max_length=750,
-                                   null=True,
-                                   blank=True,
-                                   help_text='Upisite link do slike akorda')
+    type = models.ForeignKey(
+        ChordType,
+        null=False,
+        default=0,
+        on_delete=models.SET_DEFAULT
+    )
 
     def __str__(self):
-        return f'{self.model} ({self.category.name})'
+        return f'{self.name}'

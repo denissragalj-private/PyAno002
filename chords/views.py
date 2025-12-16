@@ -10,10 +10,10 @@ def list(request):
 
 def details(request, pk):
     chord = get_object_or_404(
-        chord.objects, pk=pk
+        Chord.objects, pk=pk
     )
     return render(request, 'chords/details.html', {'chord': chord})
 
 def create(request):
-    # chords = chord.objects.all()
+    # chords = Chord.objects.all()
     return render(request, 'chords/create.html')

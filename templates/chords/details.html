@@ -2,13 +2,14 @@
 
 
 {% block page_content %}
-<a href="{% url 'chords_list' %}" class="btn btn-outline-info">Povratak na listu akorda</a>
+<a href="{% url 'chords_list' %}" class="btn btn-outline-info">Povratak na listu</a>
 
-<h1>{{ chord.model }}</h1>
-{% if chord.description %}
-    <p>Opis: {{ chord.description }}</p>
-{% endif %}
+<h1>{{ chord.name }} ({{ chord.symbol }})</h1>
 <p>Tip akorda: {{ chord.type }}</p>
-<p>Kategorija akorda: {{ chord.category }}</p>
-<div><img width=300 src="{{ chord.picture_url }}" /></div>
+{% if chord.schema_url %}
+<div><img width=300 src="{{ chord.schema_url }}" /></div>
+{% else %}
+<div><img width=300 src="https://placehold.co/400x300" /></div>
+{% endif %}
+
 {% endblock page_content %}

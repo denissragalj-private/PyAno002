@@ -10,12 +10,13 @@
         {% for chord in chords %}
             <div class="col-4">
                 <div class="card" style="width: 18rem;">
-                    <img height=200 src="{{ chord.picture_url }}" class="card-img-top" alt="...">
+                    {% if chord.schema_url %}
+                        <img height=200 src="{{ chord.schema_url }}" class="card-img-top" alt="...">
+                    {% else %}
+                        <img height=200 src="https://placehold.co/400x300" class="card-img-top" alt="...">
+                    {% endif %}
                     <div class="card-body">
-                        <h5 class="card-title">{{ chord.model }}</h5>
-                        {% if chord.description %}
-                            <p class="card-text">{{ chord.description }}</p>
-                        {% endif %}
+                        <h5 class="card-title">{{ chord.name }} ({{ chord.symbol }})</h5>
                         <a href="{% url 'chords_details' chord.pk %}" class="btn btn-outline-success">Vise detalja</a>
                     </div>
                 </div>
